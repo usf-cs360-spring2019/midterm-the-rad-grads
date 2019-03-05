@@ -210,16 +210,7 @@
           vizElement.parentNode.insertBefore(scriptElement, vizElement);
 
         </script>
-        <script type="text/javascript">
-        setTimeout(function(){
-          var viz=document.getElementsByTagName('iframe');
-          console.log(viz);
-          for(var i=0;i<viz.length;i++){
-            console.log(viz[i]);debugger;
-          viz[i].src=viz[i].src.replace('//usf-cs360-spring2019.github.io','')
-          }
-        },500)
-        </script>
+
       </div>
       <p>
         Space to write.
@@ -291,7 +282,16 @@
       </small>
     </div>
   </footer>
-
+  <script type="text/javascript">
+  setTimeout(function(){
+    var viz=document.getElementsByTagName('iframe');
+    console.log(viz);
+    for(var i=0;i<viz.length;i++){
+      console.log(viz[i]);debugger;
+    viz[i].src=viz[i].src.replace('//usf-cs360-spring2019.github.io','')
+    }
+  },800)
+  </script>
 <!-- end body and html -->
 </body>
 </html>
