@@ -211,12 +211,12 @@
 
         </script>
         <script type="text/javascript">
-        setTimeout(function(){
+        setTimeout(function(i){
           var viz=document.querySelectorAll('iframe.tableauViz')
           for(var i=0;i<viz.length;i++){
           viz[i].src=viz[i].src.replace('//usf-cs360-spring2019.github.io','')
           }
-        },2000)
+        },2000,i)
         </script>
       </div>
       <p>
