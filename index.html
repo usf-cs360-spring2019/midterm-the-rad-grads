@@ -11,6 +11,19 @@
   <!-- bulma 0.7.2 and font awesome v5.7.1 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" integrity="sha256-2pUeJf+y0ltRPSbKOeJh09ipQFYxUdct5nTY6GAXswA=" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <style>
+  .hero.is-primary.is-bold{
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://storage.googleapis.com/kaggle-datasets-images/720/1344/64a17f2ce238d73491197ac7a71dab11/dataset-cover.JPG);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .hero.is-primary.is-bold .subtitle{
+        font-weight: bolder;
+      }
+      </style>
+
+  </head>
 </head>
 
 <!-- body -->
@@ -40,7 +53,7 @@
               <span class="icon">
                 <i class="fas fa-home"></i>
               </span>
-              <span>Home Page</span>
+              <span>Home</span>
             </a>
           </div>
 
@@ -83,12 +96,12 @@
 
           </div>
           <div class="navbar-end">
-            <a class="navbar-item" href="#grade">
+          <!--  <a class="navbar-item" href="#grade">
               <span class="icon">
                 <i class="fas fa-tasks"></i>
               </span>
               <span>Grade</span>
-            </a>
+            </a>-->
             <a class="navbar-item" href="about.html">
               <span class="icon">
                 <i class="fas fa-info-circle"></i>
@@ -118,91 +131,7 @@
 
     </div>
   </section>
-  <section class="section">
-    <div class="container content">
-      <h2 id="grade">
-        Expected Grade
-      </h2>
 
-      <!-- todo: modify to indicate your expected grade -->
-      <table class="table is-hoverable">
-        <thead>
-          <tr>
-            <th>Done?</th>
-            <th>Letter</th>
-            <th>Justification</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <!-- d level functionality -->
-          <tr>
-            <td class="has-text-centered">
-              <i class="far fa-fw fa-check-circle has-text-success"></i>
-            </td>
-
-            <td class="has-text-centered">
-              D
-            </td>
-
-            <td>
-              If appropriate, provide a brief justification for this level of functionality. Clearly state if this level was not implemented.
-            </td>
-          </tr>
-
-          <!-- c level functionality -->
-          <tr>
-            <td class="has-text-centered">
-              <i class="far fa-fw fa-check-circle has-text-success"></i>
-            </td>
-
-            <td class="has-text-centered">
-              C
-            </td>
-
-            <td>
-              If appropriate, provide a brief justification for this level of functionality. Clearly state if this level was not implemented.
-            </td>
-          </tr>
-
-          <!-- b level functionality -->
-          <tr>
-            <td class="has-text-centered">
-              <i class="far fa-fw fa-times-circle has-text-danger"></i>
-            </td>
-
-            <td class="has-text-centered">
-              B
-            </td>
-
-            <td>
-              If appropriate, provide a brief justification for this level of functionality. Clearly state if this level was not implemented.
-            </td>
-          </tr>
-
-
-          <!-- a level functionality -->
-          <tr>
-            <td class="has-text-centered">
-              <i class="far fa-fw fa-times-circle has-text-danger"></i>
-            </td>
-
-            <td class="has-text-centered">
-              A
-            </td>
-
-            <td>
-              If appropriate, provide a brief justification for this level of functionality. Clearly state if this level was not implemented.
-            </td>
-          </tr>
-        <tbody>
-      </table>
-
-      <p>
-        Any additional context you want to provide regarding functionality and grading can be included here. This may include any challenges or bugs you ran into that prevented you from implementing additional functionality.
-      </p>
-    </div>
-  </section>
   <!-- separator between sections -->
   <hr class="container">
 
