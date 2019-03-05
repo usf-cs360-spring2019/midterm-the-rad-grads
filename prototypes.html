@@ -196,7 +196,7 @@
             <param name='display_static_image' value='yes' />
             <param name='display_spinner' value='yes' />
             <param name='display_overlay' value='yes' />
-            \<param name='display_count' value='yes' />
+            <param name='display_count' value='yes' />
             <param name='filter' value='publish=yes' />
           </object>
         </div>
@@ -210,7 +210,14 @@
           vizElement.parentNode.insertBefore(scriptElement, vizElement);
 
         </script>
-
+        <script>
+        setTimeout(function(){
+          var viz=document.querySelectorAll('iframe.tableauViz')
+          for(var i=0;i<viz.length;i++){
+          viz[i].src=viz[i].src.replace('//usf-cs360-spring2019.github.io','')
+          }
+        },2000)
+        </script>
       </div>
       <p>
         Space to write.
