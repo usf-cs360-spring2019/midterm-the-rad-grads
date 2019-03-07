@@ -15,7 +15,7 @@ var draw = function(data)
   let plotHeight = bounds.height - margin.top - margin.bottom;
 
   var x = d3.scaleBand()
-      .range([margin.left+20, plotWidth]),
+      .range([margin.left+45, plotWidth+50]),
       y = {},
       dragging = {};
 
@@ -130,9 +130,9 @@ var draw = function(data)
       var output = "";
       switch(d)
       {
-        case dimensionList[0]: output = "Response Time";break;
+        case dimensionList[0]: output = "Response Time (seconds)";break;
         case dimensionList[1]: output = "Priority";break;
-        case dimensionList[2]: output = "Hospital Transport Time";break;
+        case dimensionList[2]: output = "Hospital Transport Time (seconds)";break;
         //case dimensionList[3]: output = "Median Student Income in 2014";break;
       }
       return output; });
