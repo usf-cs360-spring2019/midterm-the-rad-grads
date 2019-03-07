@@ -253,7 +253,7 @@
       <h3>Discussion</h3>
 
       <p>
-        Because the distribution of call types seemed to be static throughout the year, I wanted to zoom-in and investigate parameters that could flucuate throughout the day. I chose to examine response time and hospital transport time. Response time was calculated by using the following calcuation: ABS(DATEDIFF('second',[Response DtTm],[On Scene DtTm])), and hospital transport time was calculated by using the following: ABS(DATEDIFF('second',[Transport DtTm],[Hospital DtTm])). I used seconds instead of minutes in order to preserve the resolution of the line density. I will alter the axis in the future to depict minutes intead of seconds.
+        Because the distribution of call types seemed to be static throughout the year, I wanted to zoom-in and investigate parameters that could flucuate throughout the day. I chose to examine response time and hospital transport time. Response time was calculated by using the following calcuation: ABS(DATEDIFF('second',[Response DtTm],[On Scene DtTm]))/60, and hospital transport time was calculated by using the following: ABS(DATEDIFF('second',[Transport DtTm],[Hospital DtTm]))/60. I used seconds instead of minutes in order to preserve the resolution of the line density.
         <br><br>
         Obviously, because the data was so large (>300k entries), I needed to use a python script to randomly sample a subset of 2,500 rows of data, import the subset into Tableau, make my calculated fields, and then import the data to rawgraphs.io to make the parallel coordinate. <a href = "random.py">Click here to look at the script</a>
       </p>
