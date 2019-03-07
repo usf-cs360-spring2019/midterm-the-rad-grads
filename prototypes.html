@@ -5,7 +5,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .background path {
+    fill: none;
+    stroke: white;
+    shape-rendering: geometricPrecision;
+  }
+  .foreground path {
+    fill: none;
+    shape-rendering: geometricPrecision;
+  }
 
+  .brush .extent {
+    fill-opacity: .3;
+    stroke: #fff;
+    shape-rendering: crispEdges;
+  }
+
+  .axis line,
+  .axis path {
+    fill: none;
+    stroke: white;
+    shape-rendering: geometricPrecision;
+  }
+
+  .axis text {
+    fill:white;
+    cursor: move;
+  }
+  </style>
   <title>CS 360/560 Spring 2019</title>
 
   <!-- bulma 0.7.2 and font awesome v5.7.1 -->
@@ -203,17 +231,29 @@
   <section class="section">
     <div class="container content">
       <!-- todo: modify as necessary (or move visualizations to separate pages) -->
-      <h2>Tracy's Prototype</h2>
+      <h2>Tracy's Prototypes</h2>
+      <h3>Exploratory Visualization</h3>
+      <img src="tracyproto.PNG" style="height:650px;width:80%"/>
+      <p>
+        <br>The purpose of this visualization was to see if the time of year had any effect on the distribution of call types. However as you can see, the data seems pretty unremarkable, so I moved onto more specific data.
+      <br></p>
+      <script src="https://d3js.org/d3.v5.min.js"></script>
+      <script src="parCoor.js"></script>
+      <script type="text/javascript">
+        //load the dataset
+        d3.tsv("tracyData.tsv").then(function(data){
+           console.log("Data loaded:");
+           draw(data);
+         });
+      </script>
+      <h3>Parallel Coordinate Visualization</h3>
+      <svg width="100%" height="400" style="background-color: #696969; border: 1px solid black;">
+      </svg>
 
-      <!--<svg width="100%" height="400" style="background-color: whitesmoke; border: 1px solid black;">
-      </svg>-->
-       <img src="tracyproto.PNG" style="height:650px;width:80%"/>
-
-      <h3>Interpretation</h3>
+      <h3>Discussion</h3>
 
       <p>
-        The purpose of this visualization was to see if there were any spikes of specific call activity over the course of the year due to seaonsal changes. The colors correspond to different call types, which allows the user to clearly see when there are sharp increases or decreases in the number of records for the call type for the month.
-        <br> Because the dataset was so large, it was necessary to only look at one neighborhood. Nob Hill was chosen because it was reasonably large, but not gigantic.
+        Because the distribution of call types seemed to be static throughout the year, I wanted to zoom-in and investigate parameters that could flucuate throughout the day. I chose to examine response time and hospital transport time. Response time was calculated by substracting the <b>Response time</b> and the <b>On-scene time</b>, and hospital transport time was calculated by subtracting the <b>Hospital arrival time</b> and the <b>Transport start time</b>. Obviously, because the data was so large (>300k entries), I needed to use a python script to randomly sample a subset of 2,500 rows of data, import the subset into Tableau, make my calculated fields, and then import the data to rawgraphs.io to make the parallel coordinate. <a href = "random.py">Click here to look at the script</a>
       </p>
 
     <!--  <h3>Discussion</h3>
