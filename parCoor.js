@@ -12,7 +12,7 @@ var draw = function(data)
   };
 
   let plotWidth = bounds.width - margin.right - margin.left;
-  let plotHeight = bounds.height - margin.top - margin.bottom;
+  let plotHeight = bounds.height - margin.top;
 
   var x = d3.scaleBand()
       .range([margin.left+45, plotWidth+50]),
@@ -79,7 +79,7 @@ var draw = function(data)
             return dimensionList.includes(d) && (y[d] = d3.scaleLinear()
               .domain(d3.extent(data, function(p){
                     return +p[d];}))
-              .range([plotHeight, margin.top]));
+              .range([plotHeight+20, margin.top]));
   }));
   //Draw the lines
   background = svg.append("g")

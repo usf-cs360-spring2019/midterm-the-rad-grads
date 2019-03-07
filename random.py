@@ -1,5 +1,5 @@
 import random
-
+#http://metadatascience.com/2014/02/27/random-sampling-from-very-large-files/
 def random_sampler(filename, k):
 	sample = []
 	with open(filename) as f:
