@@ -15,7 +15,7 @@ var draw = function(data)
   let plotHeight = bounds.height - margin.top;
 
   var x = d3.scaleBand()
-      .range([margin.left+45, plotWidth+50]),
+      .range([margin.left+45, plotWidth+400]),
       y = {},
       dragging = {};
 
@@ -43,7 +43,7 @@ var draw = function(data)
   lg.append('stop')
        .attr('offset', '100%')
        .attr('stop-color', '#c2bb12');
-  svg.append('rect').attr("transform", "translate(" + (plotWidth*.9-10) + "," + (margin.top*5) + ")")
+  svg.append('rect').attr("transform", "translate(" + (plotWidth*.97) + "," + (plotHeight*0.5) + ")")
        .attr('width', 20)
        .attr('height', 120)
        //.attr("transform","rotate(90)")
@@ -55,19 +55,19 @@ var draw = function(data)
     .style("text-anchor", "middle")
     .attr("font-size", "15px")
     .attr("fill", "white")
-    .attr("transform", "translate(" + (plotWidth*.9 + 30)+ "," + (margin.top*4.5) + ")");
+    .attr("transform", "translate(" + (plotWidth*.97)+ "," + (plotHeight*.47) + ")");
   svg.append("text")
     .text("0")
     .style("text-anchor", "middle")
     .attr("font-size", "15px")
     .attr("fill", "white")
-    .attr("transform", "translate(" + (plotWidth*.9 + 60)+ "," + (margin.top*5.1) + ")");
+    .attr("transform", "translate(" + (plotWidth*.96)+ "," + (plotHeight*.505) + ")");
   svg.append("text")
     .text("23")
     .style("text-anchor", "middle")
     .attr("font-size", "15px")
     .attr("fill", "white")
-    .attr("transform", "translate(" + (plotWidth*.9 + 60)+ "," + (margin.top*5.1 + 120) + ")");
+    .attr("transform", "translate(" + (plotWidth*.96)+ "," + (plotHeight*.505 + 120) + ")");
 
   //make an axis using the legendScale and have it be right beneath the legend
   //make a listener that on click, it will select all lines with the par_median of the value
