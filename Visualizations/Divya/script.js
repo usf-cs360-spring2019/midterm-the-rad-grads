@@ -8,7 +8,7 @@ function populateTotal(data) {
   return map;
 }
 
-function getMax(data) {
+function getMax1(data) {
   var max = -1;
   for (var i = 0; i < data.length; i++) {
     if (Number.parseInt(data[i].total) > max) {
@@ -21,7 +21,7 @@ String.prototype.replaceAll = function(search, replacement) {
   var target = this;
   return target.split(search).join(replacement);
 };
-var svg, g, x, y, z, tooltip, height, width, margin, graphData1;
+var svg, g, x, y, z, tooltip1, height, width, margin, graphData1;
 function drawStackedBar() {
   // create the svg
   svg = d3.select("svg#svg1");
@@ -62,7 +62,7 @@ function drawStackedBar() {
       return 0;
     });
     let countMin = 0,
-      countMax = getMax(data);
+      countMax = getMax1(data);
     y = d3
       .scaleLinear()
       .domain([countMin, countMax])
@@ -138,19 +138,19 @@ function drawStackedBar() {
     .style("font-size", "14px")
     .text("Neighborhoods");
   // Prep the tooltip bits, initial display is hidden
-  tooltip = svg
+  tooltip1 = svg
     .append("g")
     .attr("class", "tooltip")
     .style("display", "none");
 
-  tooltip
+  tooltip1
     .append("rect")
     .attr("width", 60)
     .attr("height", 20)
     .attr("fill", "white")
     .style("opacity", 0.5);
 
-  tooltip
+  tooltip1
     .append("text")
     .attr("x", 30)
     .attr("dy", "1.2em")
@@ -226,19 +226,19 @@ function drawBars(data) {
     })
     .attr("width", x.bandwidth())
     .on("mouseover", function() {
-      tooltip.style("display", null);
+      tooltip1.style("display", null);
     })
     .on("mouseout", function() {
-      tooltip.style("display", "none");
+      tooltip1.style("display", "none");
     })
     .on("mousemove", function(d) {
       var xPosition = d3.mouse(this)[0] - 5;
       var yPosition = d3.mouse(this)[1] - 5;
-      tooltip.attr(
+      tooltip1.attr(
         "transform",
         "translate(" + xPosition + "," + yPosition + ")"
       );
-      tooltip.select("text").text(d[1] - d[0]);
+      tooltip1.select("text").text(d[1] - d[0]);
     });
 }
 function handleDropdown(value) {
