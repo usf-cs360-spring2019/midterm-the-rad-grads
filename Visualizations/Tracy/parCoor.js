@@ -1,6 +1,6 @@
 var draw = function(data)
 {
-  //		Hour data
+  let mouseCoor = [0,0];
   let dimensionList = ["Response Time","Priority","Hospital Transport Time"];
   let svg = d3.select("body").select("svg");
   let bounds = svg.node().getBoundingClientRect();
@@ -25,8 +25,12 @@ var draw = function(data)
       foreground;
   var min = 0;
   var max = 23;
+  //E50003
+  //0006BF
   var colors = d3.scaleLinear().domain([min, max])
-        .range(["#e81831", '#c2bb12'])
+        //.range(["#1750E8", '#D9FA00'])
+        //.range(["#e81831", '#c2bb12'])
+        .range(["#00F4FF", '#FF14AD'])
         .interpolate(d3.interpolateRgb);
   //Making the legend
   //source: https://stackoverflow.com/questions/39023154/how-to-make-a-color-gradient-bar-using-d3js
@@ -39,15 +43,29 @@ var draw = function(data)
        .attr('y2', 1);
   lg.append('stop')
        .attr('offset', '0%')
-       .attr('stop-color', '#e81831');
+       //.attr('stop-color', '#e81831');
+       .attr('stop-color', '#00F4FF');
   lg.append('stop')
        .attr('offset', '100%')
-       .attr('stop-color', '#c2bb12');
+       //.attr('stop-color', '#c2bb12');
+       .attr('stop-color', '#FF14AD');
+  let hourScale = d3.scaleLinear().domain([0,119]).range([0,23]);
   svg.append('rect').attr("transform", "translate(" + (plotWidth*.97) + "," + (plotHeight*0.5) + ")")
        .attr('width', 20)
        .attr('height', 120)
-       //.attr("transform","rotate(90)")
-       .style("fill", "url(#Gradient2)");
+       .style("fill", "url(#Gradient2)")
+       .on("click", function() {
+         hour = d3.event.pageY - 771;
+         //make everything that IS NOT THAT COLOR, invisible
+         filterColor = colors(Math.round(hourScale(hour)));
+         var lineshide = svg.selectAll('.foreground path').filter(function(p){
+           return d3.select(this).attr("stroke") != filterColor;
+         }).attr("visibility", "hidden");
+         var lineshow = svg.selectAll('.foreground path').filter(function(p){
+           return d3.select(this).attr("stroke") == filterColor;
+         }).attr("visibility", "visible");
+         d3.event.stopPropagation();
+       });
   svg.append("g")
     .attr("transform", "translate(" + margin.right+ "," + margin.top + ")");
   svg.append("text")
@@ -68,11 +86,6 @@ var draw = function(data)
     .attr("font-size", "15px")
     .attr("fill", "white")
     .attr("transform", "translate(" + (plotWidth*.96)+ "," + (plotHeight*.505 + 120) + ")");
-
-  //make an axis using the legendScale and have it be right beneath the legend
-  //make a listener that on click, it will select all lines with the par_median of the value
-  //if the user clicks somewhere not in the rect, reset
-
   //source:https://bl.ocks.org/jasondavies/1341281
   //extract the list of dimensions and create a scale for each (in the correct order)
   x.domain(dimensions = dimensionList.filter(function(d){
@@ -82,14 +95,14 @@ var draw = function(data)
               .range([plotHeight+20, margin.top]));
   }));
   //Draw the lines
-  background = svg.append("g")
+/*  background = svg.append("g")
     .attr("class", "background")
     .selectAll("path")
     .data(data)
     .enter().append("path")
     .attr("d", path)
-    .attr("stroke-width","1px")
-    .attr("visibility", "hidden");
+    .attr("stroke-width","0.3px")
+    .attr("visibility", "hidden");*/
 
   foreground = svg.append("g")
       .attr("class", "foreground")
@@ -100,7 +113,7 @@ var draw = function(data)
       .attr("stroke",function (d) {
         return colors(d["Hour data"]) ;
       })
-      .attr("stroke-width","0.4px");
+      .attr("stroke-width","0.3px");
 
   function position(d) {
     var v = dragging[d];
@@ -111,7 +124,6 @@ var draw = function(data)
   function path(d) {
     return line(dimensions.map(function(p) { return [position(p), y[p](d[p])]; }));
   }
-
   //draw the axis
   var g = svg.selectAll(".dimension")
       .data(dimensions)
@@ -133,8 +145,10 @@ var draw = function(data)
         case dimensionList[0]: output = "Response Time (minutes)";break;
         case dimensionList[1]: output = "Priority";break;
         case dimensionList[2]: output = "Hospital Transport Time (minutes)";break;
-        //case dimensionList[3]: output = "Median Student Income in 2014";break;
       }
       return output; });
-
+  svg.on('click', function() {
+      frontlines = svg.selectAll("path").attr("visibility", "visible");
+      console.log( "Clicked");
+    });
 }
