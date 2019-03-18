@@ -1,0 +1,15 @@
+#plot rect {
+    fill: #4f79bb;
+    stroke: black;
+}
+.select-container{
+    margin:10px;
+}
+.tick text, .legend-text{
+    fill: grey;
+    font-family: 'Tahoma';
+}
+.xaxis line{
+    fill: none;
+    stroke: black;
+}

@@ -1,0 +1,12 @@
+.xaxis line{
+    fill: none;
+    stroke: black;
+}
+.xaxis text, .legend-text{
+    font-size: 8pt;
+}
+.tick text, .legend-text{
+    fill: grey;
+    font-family: 'Tahoma';
+}
+.select-container{margin:10px;}
