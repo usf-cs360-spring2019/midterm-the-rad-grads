@@ -21,7 +21,7 @@ String.prototype.replaceAll = function(search, replacement) {
   var target = this;
   return target.split(search).join(replacement);
 };
-var svg, g, x, y, z, tooltip, height, width, margin, graphData;
+var svg, g, x, y, z, tooltip, height, width, margin, graphData1;
 function drawStackedBar() {
   // create the svg
   svg = d3.select("svg#svg1");
@@ -51,7 +51,7 @@ function drawStackedBar() {
   d3.csv("viz3.csv").then(function(data, error) {
     var totalMap = populateTotal(data);
     var keys = data.columns.slice(1, 2).concat(data.columns.slice(3));
-    graphData = data;
+    graphData1 = data;
     data.sort(function(a, b) {
       if (a.Neighborhood < b.Neighborhood) {
         return -1;
@@ -241,10 +241,10 @@ function drawBars(data) {
       tooltip.select("text").text(d[1] - d[0]);
     });
 }
-function handleDropdownChange(value) {
+function handleDropdown(value) {
   switch (value) {
     case "name-ascending": {
-      graphData.sort(function(a, b) {
+      graphData1.sort(function(a, b) {
         if (a.Neighborhood < b.Neighborhood) {
           return -1;
         }
@@ -253,11 +253,11 @@ function handleDropdownChange(value) {
         }
         return 0;
       });
-      drawBars(graphData);
+      drawBars(graphData1);
       break;
     }
     case "name-descending": {
-      graphData.sort(function(a, b) {
+      graphData1.sort(function(a, b) {
         if (a.Neighborhood > b.Neighborhood) {
           return -1;
         }
@@ -266,21 +266,21 @@ function handleDropdownChange(value) {
         }
         return 0;
       });
-      drawBars(graphData);
+      drawBars(graphData1);
       break;
     }
     case "frequency-ascending": {
-        graphData.sort(function(a, b) {
+        graphData1.sort(function(a, b) {
             return a.total - b.total
         });
-        drawBars(graphData);
+        drawBars(graphData1);
         break;
       }
       case "frequency-descending": {
-        graphData.sort(function(a, b) {
+        graphData1.sort(function(a, b) {
             return b.total - a.total
         });
-        drawBars(graphData);
+        drawBars(graphData1);
         break;
       }
     default:
