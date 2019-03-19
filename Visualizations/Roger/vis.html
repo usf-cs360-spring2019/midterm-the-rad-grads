@@ -11,6 +11,8 @@
   <!-- bulma 0.7.2 and font awesome v5.7.1 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" integrity="sha256-2pUeJf+y0ltRPSbKOeJh09ipQFYxUdct5nTY6GAXswA=" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="main.js"></script>
 <style>
 .hero.is-primary.is-bold{
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://storage.googleapis.com/kaggle-datasets-images/720/1344/64a17f2ce238d73491197ac7a71dab11/dataset-cover.JPG);
@@ -119,25 +121,26 @@
     <div class="container content">
       <!-- todo: modify as necessary (or move visualizations to separate pages) -->
       <h2>Roger's Visualization</h2>
+      <script src="http://d3js.org/d3.v3.min.js"></script>
 
-      <svg width="100%" height="400" style="background-color: whitesmoke; border: 1px solid black;">
-      </svg>
+      <div style="margin:75px;"  id="chart"></div>
 
 
       <h3>Interpretation</h3>
 
       <p>
-        Space to write.
+        This visualization is about deifferent call type percentage between 2018-2019. Medical incident call have the most part of call. Since medical incident have 70.3%, it's hard to compare the smallest 5 call type. In this case, you can remove any kind of call type by click on legend.
+        For example, if you click medical incident in legend, you will get other call type percentage beside medical incident. And the information show on pie chart when mouse move on, the percentage is recalculated.
       </p>
 
       <h3>Discussion</h3>
 
       <p>
-      Space to write.
+      The primary goal of this visualization was show which kind of call type have the biggest number between 2018-2019 and the distribution of call type.
       </p>
 
       <h3>Credit</h3>
-
+      I'm very grateful to Arpit Narechania and his work. Also I got many suggestion from Team ColorIn, Dukes of Data, Magic Mirror and my teammates Divya, Tracy.
       <p>
         Space to write.
        </p>
@@ -166,5 +169,11 @@
   </footer>
 
 <!-- end body and html -->
+<script>
+var inputData = [{label:"Medical Incident",value:214580},{label:"Alarms",value:35571},{label:"Structure Fire",value:26832},{label:"Traffic Collision",value:13395},{label:"Outside Fire",value:4643},{label:"Other",value:4183},{label:"Citizen Assist",value:4145},{label:"Gas Leak",value:1756}];
+var colorScheme = ["#9c755f","#4e79a7","#edc948","#b07aa1","#59a14f","#76b7b2","#f28e2b","#e15759"];
+renderPieChart(inputData,"#chart",colorScheme);
+</script>
+
 </body>
 </html>
