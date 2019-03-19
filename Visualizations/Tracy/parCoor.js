@@ -32,6 +32,7 @@ var draw = function(data)
         //.range(["#e81831", '#c2bb12'])
         .range(["#00F4FF", '#FF14AD'])
         .interpolate(d3.interpolateRgb);
+  var hourDisplay = svg.append("text").text("All hours").attr("transform", "translate(" + (plotWidth*.92)+ "," + (plotHeight*.43) + ")").attr("font-size","30px").attr("fill", "white");
   //Making the legend
   //source: https://stackoverflow.com/questions/39023154/how-to-make-a-color-gradient-bar-using-d3js
   var defs = svg.append('defs');
@@ -64,6 +65,7 @@ var draw = function(data)
          var lineshow = svg.selectAll('.foreground path').filter(function(p){
            return d3.select(this).attr("stroke") == filterColor;
          }).attr("visibility", "visible");
+         hourDisplay.text(""+Math.round(hourScale(hour))+":00");
          d3.event.stopPropagation();
        });
   svg.append("g")
@@ -149,6 +151,7 @@ var draw = function(data)
       return output; });
   svg.on('click', function() {
       frontlines = svg.selectAll("path").attr("visibility", "visible");
+      hourDisplay.text("All hours");
       console.log( "Clicked");
     });
 }
