@@ -236,14 +236,14 @@
         The above stacked bar shows the number of emergency calls, made from San Francisco neighborhoods on th year 2018.
         Data for each neighborhood is grouped by call type groups which are mainly divided into four categories: Alarm, Fire, Non-Life threatening, Potentially life threatening.
         Mouse hover over each neighborhood's respective call type groups, gives the number of calls received for that group.
-        Also change the values in the dropdown menu to sort the bar chart. Data can be sorted by Alphabetical(Neighborhoods)-ascending and
+        Also change the values in the dropdown menu to sort the bar chart. Data can be sorted by Alphabetical (Neighborhoods)-ascending and
         Number of calls-descending.
       </p>
 
       <h3>Discussion</h3>
       <p>
         When the data is analyzed for each neighborhood, its shocking to see that most of the calls made to San Francisco fire department were
-        for potentially life threatening emergencies and the number of calls are pretty high.
+        for potentially life-threatening emergencies and the number of calls are pretty high.
         These calls need to be addressed with high priority and require to have less response time.
         The calls that are classified as 'Potentially Life threatening' are mainly medical emergencies.
       </br>
@@ -284,21 +284,22 @@
           modal.style.display = "none";
         }
       </script>
-      <h3>Credit</h3>
+      <h3>Credits</h3>
 
       <p>
         Data set:
       </br><a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data">Data SF</a>
       </br>Code References:
-    </br><a href="http://bl.ocks.org/KatiRG/5f168b5c884b1f9c36a5">KatiRG’s clickable stacked bar chart</a>
-    </br><a href="https://observablehq.com/@d3/sortable-bar-chart">Mike Bostock’s Sortable Bar Chart</a>
-    </br><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_img">w3schools</a>
+      </br><a href="http://bl.ocks.org/KatiRG/5f168b5c884b1f9c36a5">KatiRG’s clickable stacked bar chart</a>
+      </br><a href="https://observablehq.com/@d3/sortable-bar-chart">Mike Bostock’s Sortable Bar Chart</a>
+      </br><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_img">w3schools</a>
 
-  </br>Other Supporting Data References:
-    </br><a href="http://default.sfplanning.org/publications_reports/SF_NGBD_SocioEconomic_Profiles/2010-2014_ACS_Profile_Neighborhoods_v3AH.pdf">sfplanning.org</a>
-    </br><a href="https://lompocrecord.com/news/local/firefighters-respond-to-all-kinds-of-emergencies/article_56dfc084-3bf3-11e0-b939-001cc4c002e0.html">Lompoc Record</a>
-    </br><a href="https://patch.com/california/shermanoaks/how-fast-do-firefighters-respond-youll-soon-find-out">How Fast Do Firefighters Respond?</a>
-    </div>
+      </br>Other Supporting Data References:
+      </br><a href="http://default.sfplanning.org/publications_reports/SF_NGBD_SocioEconomic_Profiles/2010-2014_ACS_Profile_Neighborhoods_v3AH.pdf">sfplanning.org</a>
+      </br><a href="https://lompocrecord.com/news/local/firefighters-respond-to-all-kinds-of-emergencies/article_56dfc084-3bf3-11e0-b939-001cc4c002e0.html">Lompoc Record</a>
+      </br><a href="https://patch.com/california/shermanoaks/how-fast-do-firefighters-respond-youll-soon-find-out">How Fast Do Firefighters Respond?</a>
+      </p>
+      </div>
   </section>
 
   --<section class="section">
@@ -327,7 +328,7 @@
         </script>
       <h3>Interpretation</h3>
       <p>
-        The above bar graph shows the average travel time of SF Fire engines to each neighborhood, for potentially life threatening emergencies.
+        The above bar graph shows the average travel time of SF Fire engines to each neighborhood, for <b>Potentially life threatening emergencies</b>.
         Average travel time is calculated from the difference of 'Dispatch Time' and 'On scene Time'. Hover over the bars to see the exact value of travel time.
         The bars can be sorted using the options in the dropdown above. Bars can be sorted alphabetically-ascending and traveltime-descending.
       </p>
@@ -340,21 +341,59 @@
         were high in each neighborhood. These calls should be treated with high priority and should be
         addressed with less response time.
 
-      </br>Inorder to explore more about the response times to each neighborhood, I chose to calculate average travel time to each neighborhood.
-        Instead of considering the total response time, I chose travel time because response time can have dispatch call duration,turn out time
-        and travel. Among the above times, the most significant one is travel time.
+      Inorder to explore more about the response times to each neighborhood, I chose to calculate average travel time to each neighborhood.
+        Instead of considering the total response time, I chose travel time because response time is the addition of dispatch call duration,turn out time
+        and travel time. Among the above times, the most significant one is travel time.
       </br>
-        By analysing the graph, we can see that fortunately for most of the neighborhoods, the travel time is very less.
-        But still we see some outliers like Treasure island, Lakeshore.. with travel time as around 8 minutes.
+      </br>
+        By analyzing the graph, we can see that fortunately for most of the neighborhoods, the travel time is very less which is around 5 minutes.
+        From the articles mentioned in the credits, I came to a know  that  in a life-threatening medical emergency, first responders providing basic
+        and advanced life support and arrive first at the scene of the incident to treat the patient until an ambulance arrives to transport the patient to the hospital, if necessary.
+        The goal in 1710 (for career firefighters) is also states: 60 seconds to turn-out, 4 minutes for the first engine company to arrive,
+        and 8 minutes for the full first-alarm assignment for at least 90 percent of all fire calls.
+        But we see some outliers like Treasure island, Lakeshore, Visitacion valley, Presidio with travel time itself as around 7-9 minutes.
+        This can be due to various reasons like traffic, road conditions, or station location and traffic.
+        Refer to the pop up image below to see the different fire station locations in the city for a better understanding.
+        We can conclude that there is a need to improve response times in some areas of the city.
       </br>
 
       </p>
+      <img id="myImg2" src="City_FireStations.png"  style="width:100%;max-width:300px">
+      <div id="myModal2" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+      </div>
 
-      <h3>Credit</h3>
+      <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
 
-      <p>
-        Space to write.
-       </p>
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById('myImg2');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+      </script>
+      <h3>Credits</h3>
+      Data set:
+    </br><a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data">Data SF</a>
+    </br>Other Supporting Data References:
+  </br><a href="https://sf-fire.org/">sf-fire.org</a>
+    </br><a href="https://sfgov.org/scorecards/public-safety/ambulance-response-life-treatening-emergencies">City performance score cards</a>
+    </br><a href="https://brucehensler.typepad.com/the-practical-fireman/2008/07/nfpa-1710-1720-and-response-time.html">NFPA 1710, 1720, and response time</a>
     </div>
   </section>
 
@@ -377,7 +416,7 @@
         <a href="https://www.usfca.edu/">University of San Franciscio</a>
       </small>
     </div>
-  </footer>
+  </footer>></a>
 
 <!-- end body and html -->
 </body>
