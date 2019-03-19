@@ -141,7 +141,7 @@
   <section class="section">
     <div class="container content">
       <!-- todo: modify as necessary (or move visualizations to separate pages) -->
-      <h2>Tracy's Visualization</h2>
+      <h1>Tracy's Visualization</h1>
       <script src="https://d3js.org/d3.v5.min.js"></script>
       <script src="parCoor.js"></script>
       <script type="text/javascript">
@@ -160,21 +160,31 @@
 
       <h3>Interpretation</h3>
 
-      <p>
-        Space to write.
-      </p>
+      <div style="text-align: justify;">
+        <p>
+          This parallel coordinates visualization displays the randomly selected subset of data (size 2500) from the calls that occured in 2018 as described in the Data and Processing Page.
+          Each <b>line</b> is a call, and the <b>color</b> indicates the hour of the call. If you click on the Legend, calls only from the selected hour are displayed. <b>Priority 2</b> refers to Non-Emergency Calls, <b>Priority 3</b> refers to Emergency Calls, and <b>Priority 0</b> refers to calls with an undeclared/null priority.
+          <br>
+        </p>
+      </div>
 
       <h3>Discussion</h3>
 
-      <p>
-      Space to write.
-      </p>
+      <div style="text-align: justify;">
+        <p>
+          At glance, it does not seem as if call priority significantly impacts the response time or hospital travel time. But, at 16:00 and 17:00, it seems that hospital travel time is higher than at other times of day. This may be due to traffic the area. However on average, reponse times and transport times do not seem to vary based on call priorty, which is evidenced by the similar spread patterns along the response time and transport time axes.
+        <br>
+        </p>
+      </div>
 
       <h3>Credit</h3>
       <div style="text-align: justify;">
         <p>
+          Data set:
+        </br><a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data">Data SF</a><br><br>
+          Code References:<br>
           A great many thanks to Jason Davies and his Block! I used a lot of his code to generate this visualization. Click <a href="https://bl.ocks.org/jasondavies/1341281">here</a> to take a look.
-          <br><br>
+          <br>
           I also referenced <a href = "https://stackoverflow.com/questions/39023154/how-to-make-a-color-gradient-bar-using-d3js"> this stackoverflow post</a> to help me generate my legend.
           <br><br>
         </p>
