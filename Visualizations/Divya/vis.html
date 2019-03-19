@@ -23,6 +23,92 @@
   .hero.is-primary.is-bold .subtitle{
       font-weight: bolder;
     }
+
+    #myImg {
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #myImg:hover {opacity: 0.7;}
+
+    /* The Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    /* Caption of Modal Image */
+    #caption {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+      height: 150px;
+    }
+
+    /* Add Animation */
+    .modal-content, #caption {
+      -webkit-animation-name: zoom;
+      -webkit-animation-duration: 0.6s;
+      animation-name: zoom;
+      animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+      from {-webkit-transform:scale(0)}
+      to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+      from {transform:scale(0)}
+      to {transform:scale(1)}
+    }
+
+    /* The Close Button */
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px){
+      .modal-content {
+        width: 100%;
+      }
+    }
     </style>
 </head>
 
@@ -142,23 +228,76 @@
         <script type="text/javascript">
           drawStackedBar();
         </script>
+
+
       <h3>Interpretation</h3>
 
       <p>
-        Space to write.
+        The above stacked bar shows the number of emergency calls, made from San Francisco neighborhoods on th year 2018.
+        Data for each neighborhood is grouped by call type groups which are mainly divided into four categories: Alarm, Fire, Non-Life threatening, Potentially life threatening.
+        Mouse hover over each neighborhood's respective call type groups, gives the number of calls received for that group.
+        Also change the values in the dropdown menu to sort the bar chart. Data can be sorted by Alphabetical(Neighborhoods)-ascending and
+        Number of calls-descending.
       </p>
 
       <h3>Discussion</h3>
-
       <p>
-      Space to write.
+        When the data is analyzed for each neighborhood, its shocking to see that most of the calls made to San Francisco fire department were
+        for potentially life threatening emergencies and the number of calls are pretty high.
+        These calls need to be addressed with high priority and require to have less response time.
+        The calls that are classified as 'Potentially Life threatening' are mainly medical emergencies.
+      </br>
+      The analysis of the data makes us wonder, why fire department has to respond to all the life threatening emergencies?
+      The answer is explained in
+      <a href="https://lompocrecord.com/news/local/firefighters-respond-to-all-kinds-of-emergencies/article_56dfc084-3bf3-11e0-b939-001cc4c002e0.html">Lompoc Record</a>
+      </br>Click on the popup image below to see the population recorded on each neighborhood by sfplanning.org based on American Community Survey 2010–2014
+        (The image was made using Tableau by creating a csv file from
+        <a href="http://default.sfplanning.org/publications_reports/SF_NGBD_SocioEconomic_Profiles/2010-2014_ACS_Profile_Neighborhoods_v3AH.pdf">sfplanning.org</a>
+        pdf manually). This helps to get a better understanding about the relation between population and emergency call records in each neighborhoods.
       </p>
+      <img id="myImg" src="Population_Survey.png"  style="width:100%;max-width:300px">
+      <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+      </div>
 
+      <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById('myImg');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+      </script>
       <h3>Credit</h3>
 
       <p>
-        Space to write.
-       </p>
+        Data set:
+      </br><a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data">Data SF</a>
+      </br>Code References:
+    </br><a href="http://bl.ocks.org/KatiRG/5f168b5c884b1f9c36a5">KatiRG’s clickable stacked bar chart</a>
+    </br><a href="https://observablehq.com/@d3/sortable-bar-chart">Mike Bostock’s Sortable Bar Chart</a>
+    </br><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_img">w3schools</a>
+
+  </br>Other Supporting Data References:
+    </br><a href="http://default.sfplanning.org/publications_reports/SF_NGBD_SocioEconomic_Profiles/2010-2014_ACS_Profile_Neighborhoods_v3AH.pdf">sfplanning.org</a>
+    </br><a href="https://lompocrecord.com/news/local/firefighters-respond-to-all-kinds-of-emergencies/article_56dfc084-3bf3-11e0-b939-001cc4c002e0.html">Lompoc Record</a>
+    </br><a href="https://patch.com/california/shermanoaks/how-fast-do-firefighters-respond-youll-soon-find-out">How Fast Do Firefighters Respond?</a>
     </div>
   </section>
 
@@ -171,10 +310,10 @@
             </option>
             <option value="name-ascending">Alphabetical-ascending
             </option>
-            <option value="name-descending">Alphabetical-descending
+            <!--<option value="name-descending">Alphabetical-descending
             </option>
             <option value="traveltime-ascending">Travel Time-ascending
-            </option>
+            </option>-->
             <option value="traveltime-descending">Travel Time-descending
             </option>
         </select>
@@ -187,15 +326,28 @@
           barChart();
         </script>
       <h3>Interpretation</h3>
-
       <p>
-        Space to write.
+        The above bar graph shows the average travel time of SF Fire engines to each neighborhood, for potentially life threatening emergencies.
+        Average travel time is calculated from the difference of 'Dispatch Time' and 'On scene Time'. Hover over the bars to see the exact value of travel time.
+        The bars can be sorted using the options in the dropdown above. Bars can be sorted alphabetically-ascending and traveltime-descending.
       </p>
 
       <h3>Discussion</h3>
 
       <p>
-      Space to write.
+        The Visualization-1 is the motivation for Visualization-2.
+        In Visualization-1, we discussed that number of calls for life threatening emergencies
+        were high in each neighborhood. These calls should be treated with high priority and should be
+        addressed with less response time.
+
+      </br>Inorder to explore more about the response times to each neighborhood, I chose to calculate average travel time to each neighborhood.
+        Instead of considering the total response time, I chose travel time because response time can have dispatch call duration,turn out time
+        and travel. Among the above times, the most significant one is travel time.
+      </br>
+        By analysing the graph, we can see that fortunately for most of the neighborhoods, the travel time is very less.
+        But still we see some outliers like Treasure island, Lakeshore.. with travel time as around 8 minutes.
+      </br>
+
       </p>
 
       <h3>Credit</h3>

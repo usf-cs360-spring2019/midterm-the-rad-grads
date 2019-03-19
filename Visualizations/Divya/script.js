@@ -80,11 +80,17 @@ function drawStackedBar() {
       .attr("fill", "#000")
       .attr("font-weight", "bold")
       .attr("text-anchor", "start");
+    g
+    .append("text")
+    .attr("transform","translate(760,10)")
+    .attr("text-anchor", "left")
+    .style("font-size","16px")
+    .text("Call Type Group");
 
     var legend = g
       .append("g")
       .attr("class", "legend")
-      .attr("transform", "translate( 60 ,0)")
+      .attr("transform", "translate( 60 ,30)")
       .attr("font-family", "sans-serif")
       .attr("font-size", 10)
       .attr("text-anchor", "end")
@@ -119,7 +125,7 @@ function drawStackedBar() {
     .attr("y", margin.top+10)
     .attr("text-anchor", "left")
     .style("font-size", "23px")
-    .text("Neighborhoods vs Call Type Group");
+    .text("Neighborhoods and Call Type Group");
 
   svg
     .append("text")
