@@ -58,14 +58,14 @@ var draw = function(data)
        .on("click", function() {
          hour = d3.event.pageY - 771;
          //make everything that IS NOT THAT COLOR, invisible
-         filterColor = colors(Math.round(hourScale(hour)));
+         filterColor = colors(Math.round(hourScale(hour))-1);
          var lineshide = svg.selectAll('.foreground path').filter(function(p){
            return d3.select(this).attr("stroke") != filterColor;
          }).attr("visibility", "hidden");
          var lineshow = svg.selectAll('.foreground path').filter(function(p){
            return d3.select(this).attr("stroke") == filterColor;
          }).attr("visibility", "visible");
-         hourDisplay.text(""+Math.round(hourScale(hour))+":00");
+         hourDisplay.text(""+Math.round(hourScale(hour)-1)+":00");
          d3.event.stopPropagation();
        });
   svg.append("g")
